@@ -67,10 +67,14 @@ export class SnapPointSlider extends LitElement {
     return Math.round(rawPosition);
   }
 
+  private toVisual(position: number): number {
+    return 100 - position;
+  }
+
   private positionFromPointerX(clientX: number): number {
     const rect = this.trackEl.getBoundingClientRect();
     const raw = ((clientX - rect.left) / rect.width) * 100;
-    return Math.max(0, Math.min(100, raw));
+    return Math.max(0, Math.min(100, 100 - raw));
   }
 
   private firePositionChanged(position: number): void {
@@ -133,7 +137,7 @@ export class SnapPointSlider extends LitElement {
               <ha-icon
                 class=${classMap({ active: p.position === thumbPos })}
                 .icon=${p.icon}
-                style=${styleMap({ left: `${p.position}%` })}
+                style=${styleMap({ left: `${this.toVisual(p.position)}%` })}
                 @click=${() => this.onDotClick(p.position)}
               ></ha-icon>
             `,
@@ -149,7 +153,7 @@ export class SnapPointSlider extends LitElement {
           <div class="track">
             <div
               class=${classMap({ fill: true, moving: this.moving })}
-              style=${styleMap({ width: `${this.currentPosition}%` })}
+              style=${styleMap({ width: `${this.toVisual(this.currentPosition)}%` })}
             ></div>
           </div>
 
@@ -158,9 +162,9 @@ export class SnapPointSlider extends LitElement {
               <div
                 class=${classMap({
                   dot: true,
-                  active: p.position <= this.currentPosition,
+                  active: p.position >= this.currentPosition,
                 })}
-                style=${styleMap({ left: `${p.position}%` })}
+                style=${styleMap({ left: `${this.toVisual(p.position)}%` })}
                 @click=${() => this.onDotClick(p.position)}
               ></div>
             `,
@@ -172,7 +176,7 @@ export class SnapPointSlider extends LitElement {
               snapped,
               dragging: this.dragging,
             })}
-            style=${styleMap({ left: `${thumbPos}%` })}
+            style=${styleMap({ left: `${this.toVisual(thumbPos)}%` })}
           ></div>
         </div>
       </div>
