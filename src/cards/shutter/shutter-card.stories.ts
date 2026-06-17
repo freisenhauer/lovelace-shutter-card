@@ -16,9 +16,9 @@ function setup(
 
 const meta: Meta = {
   title: "Cards/ShutterCard",
-  component: "shutter-card",
+  component: "fr-shutter-card",
   render: (args) => {
-    const el = document.createElement("shutter-card") as ShutterCardBase;
+    const el = document.createElement("fr-shutter-card") as ShutterCardBase;
     setup(el, args.position ?? 0, args.state, args.configOverrides);
     return html`<div style="padding: 24px; max-width: 400px;">${el}</div>`;
   },
@@ -93,7 +93,7 @@ export const AllStates: Story = {
         style="padding: 24px; max-width: 400px; display: flex; flex-direction: column; gap: 16px;"
       >
         ${cards.map((c) => {
-          const el = document.createElement("shutter-card") as ShutterCardBase;
+          const el = document.createElement("fr-shutter-card") as ShutterCardBase;
           setup(el, c.position, c.state);
           return html`
             <div>

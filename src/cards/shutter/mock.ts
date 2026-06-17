@@ -10,7 +10,7 @@ export const TYPICAL_PRESETS: SliderPreset[] = [
 
 export function mockConfig(overrides?: Partial<ShutterCardConfig>): ShutterCardConfig {
   return {
-    type: "custom:shutter-card",
+    type: "custom:fr-shutter-card",
     entity: "cover.living_room",
     presets: TYPICAL_PRESETS,
     ...overrides,

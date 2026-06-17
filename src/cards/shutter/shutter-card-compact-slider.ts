@@ -5,7 +5,7 @@ import { cardStyles } from "../../shared/styles/card.js";
 import "../../shared/components/header/entity-header.js";
 import "../../shared/components/snap-point-slider/snap-point-slider.js";
 
-@customElement("shutter-card-compact-slider")
+@customElement("fr-shutter-card-compact-slider")
 export class ShutterCardCompactSlider extends ShutterCardBase {
   protected render() {
     if (!this._config || !this.hass) return html``;
@@ -44,6 +44,6 @@ export class ShutterCardCompactSlider extends ShutterCardBase {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "shutter-card-compact-slider": ShutterCardCompactSlider;
+    "fr-shutter-card-compact-slider": ShutterCardCompactSlider;
   }
 }

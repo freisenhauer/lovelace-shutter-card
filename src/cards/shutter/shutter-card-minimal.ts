@@ -3,7 +3,7 @@ import { customElement } from "lit/decorators.js";
 import { ShutterCardBase } from "../../shared/base/shutter-card-base.js";
 import "../../shared/components/header/entity-header.js";
 
-@customElement("shutter-card-minimal")
+@customElement("fr-shutter-card-minimal")
 export class ShutterCardMinimal extends ShutterCardBase {
   protected render() {
     if (!this._config || !this.hass) return html``;
@@ -38,6 +38,6 @@ export class ShutterCardMinimal extends ShutterCardBase {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "shutter-card-minimal": ShutterCardMinimal;
+    "fr-shutter-card-minimal": ShutterCardMinimal;
   }
 }

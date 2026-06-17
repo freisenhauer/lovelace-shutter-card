@@ -5,7 +5,7 @@ import { cardStyles } from "../../shared/styles/card.js";
 import "../../shared/components/header/entity-header.js";
 import "../../shared/components/preset-chip/preset-chip.js";
 
-@customElement("shutter-card-compact-chips")
+@customElement("fr-shutter-card-compact-chips")
 export class ShutterCardCompactChips extends ShutterCardBase {
   protected render() {
     if (!this._config || !this.hass) return html``;
@@ -53,6 +53,6 @@ export class ShutterCardCompactChips extends ShutterCardBase {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "shutter-card-compact-chips": ShutterCardCompactChips;
+    "fr-shutter-card-compact-chips": ShutterCardCompactChips;
   }
 }

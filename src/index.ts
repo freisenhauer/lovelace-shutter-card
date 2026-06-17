@@ -16,22 +16,22 @@ declare global {
 window.customCards = window.customCards ?? [];
 window.customCards.push(
   {
-    type: "shutter-card",
+    type: "fr-shutter-card",
     name: "Shutter Card",
     description: "Full shutter card with slider and preset chips",
   },
   {
-    type: "shutter-card-compact-chips",
+    type: "fr-shutter-card-compact-chips",
     name: "Shutter Card — Compact Chips",
     description: "Compact shutter card with preset chips",
   },
   {
-    type: "shutter-card-compact-slider",
+    type: "fr-shutter-card-compact-slider",
     name: "Shutter Card — Compact Slider",
     description: "Compact shutter card with snap-point slider",
   },
   {
-    type: "shutter-card-minimal",
+    type: "fr-shutter-card-minimal",
     name: "Shutter Card — Minimal",
     description: "Minimal shutter card with header only",
   },

@@ -6,7 +6,7 @@ import "../../shared/components/header/entity-header.js";
 import "../../shared/components/snap-point-slider/snap-point-slider.js";
 import "../../shared/components/preset-chip/preset-chip.js";
 
-@customElement("shutter-card")
+@customElement("fr-shutter-card")
 export class ShutterCard extends ShutterCardBase {
   protected render() {
     if (!this._config || !this.hass) return html``;
@@ -64,6 +64,6 @@ export class ShutterCard extends ShutterCardBase {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "shutter-card": ShutterCard;
+    "fr-shutter-card": ShutterCard;
   }
 }
