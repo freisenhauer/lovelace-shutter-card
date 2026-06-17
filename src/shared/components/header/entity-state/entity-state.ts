@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import type { SliderPreset } from "../../types/preset.js";
+import type { SliderPreset } from "../../../types/preset.js";
 
 @customElement("entity-state")
 export class EntityState extends LitElement {

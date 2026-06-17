@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
 import "./entity-state.js";
-import type { SliderPreset } from "../../types/preset.js";
+import type { SliderPreset } from "../../../types/preset.js";
 
 const typicalPresets: SliderPreset[] = [
   { icon: "mdi:eye", position: 5 },

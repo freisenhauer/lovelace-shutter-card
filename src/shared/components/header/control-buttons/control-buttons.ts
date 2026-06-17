@@ -8,8 +8,13 @@ export class ControlButtons extends LitElement {
   @property({ type: Boolean, reflect: true })
   disabled = false;
 
+  @property({ type: Number, attribute: "current-position" })
+  currentPosition = 0;
+
+  @property({ type: Boolean })
+  moving = false;
+
   private onAction(action: ControlAction): void {
-    if (this.disabled) return;
     this.dispatchEvent(
       new CustomEvent("control-action", {
         detail: { action },
@@ -20,17 +25,21 @@ export class ControlButtons extends LitElement {
   }
 
   protected render() {
+    const openDisabled = this.disabled || this.currentPosition >= 100;
+    const stopDisabled = this.disabled || !this.moving;
+    const closeDisabled = this.disabled || this.currentPosition <= 0;
+
     return html`
       <div class="buttons">
-        <button aria-label="Open" ?disabled=${this.disabled} @click=${() => this.onAction("open")}>
+        <button aria-label="Open" ?disabled=${openDisabled} @click=${() => this.onAction("open")}>
           <ha-icon .icon=${"mdi:arrow-up"}></ha-icon>
         </button>
-        <button aria-label="Stop" ?disabled=${this.disabled} @click=${() => this.onAction("stop")}>
+        <button aria-label="Stop" ?disabled=${stopDisabled} @click=${() => this.onAction("stop")}>
           <ha-icon .icon=${"mdi:stop"}></ha-icon>
         </button>
         <button
           aria-label="Close"
-          ?disabled=${this.disabled}
+          ?disabled=${closeDisabled}
           @click=${() => this.onAction("close")}
         >
           <ha-icon .icon=${"mdi:arrow-down"}></ha-icon>
@@ -78,7 +87,7 @@ export class ControlButtons extends LitElement {
       transform: scale(0.92);
     }
 
-    :host([disabled]) button {
+    button:disabled {
       opacity: 0.5;
       cursor: default;
       pointer-events: none;
