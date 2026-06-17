@@ -19,6 +19,7 @@ export class ShutterCardCompactSlider extends ShutterCardBase {
             .currentPosition=${this._currentPosition}
             .presets=${this._presets}
             ?moving=${this._isMoving}
+            ?closing=${this._isClosing}
             @control-action=${this._handleControlAction}
           ></entity-header>
           <snap-point-slider
@@ -26,6 +27,7 @@ export class ShutterCardCompactSlider extends ShutterCardBase {
             .currentPosition=${this._currentPosition}
             .targetPosition=${this._effectiveTargetPosition}
             ?moving=${this._isMoving}
+            ?closing=${this._isClosing}
             @position-changed=${this._handlePositionChanged}
           ></snap-point-slider>
         </div>

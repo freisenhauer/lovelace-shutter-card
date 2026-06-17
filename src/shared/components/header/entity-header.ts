@@ -21,6 +21,9 @@ export class EntityHeader extends LitElement {
   @property({ type: Boolean })
   moving = false;
 
+  @property({ type: Boolean })
+  closing = false;
+
   @property({ type: Boolean, reflect: true })
   disabled = false;
 
@@ -46,6 +49,7 @@ export class EntityHeader extends LitElement {
         <control-buttons
           .currentPosition=${this.currentPosition}
           ?moving=${this.moving}
+          ?closing=${this.closing}
           ?disabled=${this.disabled}
         ></control-buttons>
       </div>

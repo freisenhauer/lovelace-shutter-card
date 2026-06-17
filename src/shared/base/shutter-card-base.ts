@@ -56,6 +56,10 @@ export abstract class ShutterCardBase extends LitElement {
     return s === "opening" || s === "closing";
   }
 
+  protected get _isClosing(): boolean {
+    return this._entity?.state === "closing";
+  }
+
   protected get _entityName(): string {
     return this._config?.name ?? (this._entity?.attributes.friendly_name as string) ?? "";
   }

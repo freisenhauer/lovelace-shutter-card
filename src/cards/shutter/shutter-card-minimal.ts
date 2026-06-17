@@ -17,6 +17,7 @@ export class ShutterCardMinimal extends ShutterCardBase {
             .currentPosition=${this._currentPosition}
             .presets=${this._presets}
             ?moving=${this._isMoving}
+            ?closing=${this._isClosing}
             @control-action=${this._handleControlAction}
           ></entity-header>
         </div>

@@ -30,6 +30,9 @@ export class SnapPointSlider extends LitElement {
   @property({ type: Boolean, reflect: true })
   moving = false;
 
+  @property({ type: Boolean })
+  closing = false;
+
   @property({ type: Boolean, reflect: true })
   disabled = false;
 
@@ -152,7 +155,7 @@ export class SnapPointSlider extends LitElement {
         >
           <div class="track">
             <div
-              class=${classMap({ fill: true, moving: this.moving })}
+              class=${classMap({ fill: true, moving: this.moving, closing: this.closing })}
               style=${styleMap({ width: `${this.toVisual(this.currentPosition)}%` })}
             ></div>
           </div>
@@ -253,16 +256,42 @@ export class SnapPointSlider extends LitElement {
     }
 
     .fill.moving {
-      animation: pulsate 1.5s ease-in-out infinite;
+      position: relative;
+      overflow: hidden;
     }
 
-    @keyframes pulsate {
-      0%,
-      100% {
-        opacity: 0.9;
+    .fill.moving::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.45) 50%,
+        transparent 100%
+      );
+      animation: shimmer 1.5s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+      0% {
+        transform: translateX(-100%);
       }
-      50% {
-        opacity: 0.4;
+      100% {
+        transform: translateX(100%);
+      }
+    }
+
+    .fill.moving.closing::after {
+      animation-name: shimmer-reverse;
+    }
+
+    @keyframes shimmer-reverse {
+      0% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(-100%);
       }
     }
 

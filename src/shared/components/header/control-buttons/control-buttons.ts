@@ -1,5 +1,6 @@
 import { LitElement, html, css } from "lit";
 import { customElement, property } from "lit/decorators.js";
+import { classMap } from "lit/directives/class-map.js";
 
 export type ControlAction = "open" | "stop" | "close";
 
@@ -13,6 +14,13 @@ export class ControlButtons extends LitElement {
 
   @property({ type: Boolean })
   moving = false;
+
+  @property({ type: Boolean })
+  closing = false;
+
+  private get _opening(): boolean {
+    return this.moving && !this.closing;
+  }
 
   private onAction(action: ControlAction): void {
     this.dispatchEvent(
@@ -31,13 +39,19 @@ export class ControlButtons extends LitElement {
 
     return html`
       <div class="buttons">
-        <button aria-label="Open" ?disabled=${openDisabled} @click=${() => this.onAction("open")}>
+        <button
+          class=${classMap({ active: this._opening })}
+          aria-label="Open"
+          ?disabled=${openDisabled}
+          @click=${() => this.onAction("open")}
+        >
           <ha-icon .icon=${"mdi:arrow-up"}></ha-icon>
         </button>
         <button aria-label="Stop" ?disabled=${stopDisabled} @click=${() => this.onAction("stop")}>
           <ha-icon .icon=${"mdi:stop"}></ha-icon>
         </button>
         <button
+          class=${classMap({ active: this.closing })}
           aria-label="Close"
           ?disabled=${closeDisabled}
           @click=${() => this.onAction("close")}
@@ -53,6 +67,7 @@ export class ControlButtons extends LitElement {
       display: inline-flex;
       --_btn-size: var(--control-button-size, 30px);
       --_icon-size: var(--control-icon-size, 16px);
+      --_accent: var(--control-button-accent, var(--primary-color, #03a9f4));
       --_bg: var(--control-button-background, var(--secondary-background-color, #f0f0f0));
       --_text: var(--control-button-color, var(--primary-text-color, #212121));
     }
@@ -85,6 +100,11 @@ export class ControlButtons extends LitElement {
 
     button:active {
       transform: scale(0.92);
+    }
+
+    button.active {
+      background: color-mix(in srgb, var(--_accent) 20%, transparent);
+      color: var(--_accent);
     }
 
     button:disabled {

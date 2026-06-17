@@ -25,6 +25,7 @@ const meta: Meta = {
     currentPosition: { control: { type: "range", min: 0, max: 100 } },
     targetPosition: { control: { type: "range", min: 0, max: 100 } },
     moving: { control: "boolean" },
+    closing: { control: "boolean" },
     disabled: { control: "boolean" },
   },
   render: (args) => html`
@@ -34,6 +35,7 @@ const meta: Meta = {
         .currentPosition=${args.currentPosition ?? 0}
         .targetPosition=${args.targetPosition ?? 0}
         ?moving=${args.moving}
+        ?closing=${args.closing}
         ?disabled=${args.disabled}
         @position-changed=${(e: CustomEvent) => console.log("position-changed", e.detail)}
       ></snap-point-slider>
@@ -96,6 +98,7 @@ export const MovingClosing: Story = {
     currentPosition: 70,
     targetPosition: 20,
     moving: true,
+    closing: true,
     presets: typicalPresets,
   },
 };

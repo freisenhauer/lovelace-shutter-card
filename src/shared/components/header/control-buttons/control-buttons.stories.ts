@@ -8,6 +8,7 @@ const meta: Meta = {
   argTypes: {
     currentPosition: { control: { type: "range", min: 0, max: 100 } },
     moving: { control: "boolean" },
+    closing: { control: "boolean" },
     disabled: { control: "boolean" },
   },
   render: (args) => html`
@@ -15,6 +16,7 @@ const meta: Meta = {
       <control-buttons
         .currentPosition=${args.currentPosition ?? 50}
         ?moving=${args.moving}
+        ?closing=${args.closing}
         ?disabled=${args.disabled}
         @control-action=${(e: CustomEvent) => console.log("control-action", e.detail)}
       ></control-buttons>
@@ -40,9 +42,14 @@ export const FullyClosed: Story = {
   args: { currentPosition: 0 },
 };
 
-export const Moving: Story = {
-  name: "Moving (stop enabled)",
+export const Opening: Story = {
+  name: "Opening (open highlighted)",
   args: { currentPosition: 50, moving: true },
+};
+
+export const Closing: Story = {
+  name: "Closing (close highlighted)",
+  args: { currentPosition: 50, moving: true, closing: true },
 };
 
 export const Disabled: Story = {

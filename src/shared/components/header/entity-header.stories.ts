@@ -17,6 +17,7 @@ const meta: Meta = {
     icon: { control: "text" },
     currentPosition: { control: { type: "range", min: 0, max: 100 } },
     moving: { control: "boolean" },
+    closing: { control: "boolean" },
     disabled: { control: "boolean" },
   },
   render: (args) => html`
@@ -27,6 +28,7 @@ const meta: Meta = {
         .currentPosition=${args.currentPosition ?? 0}
         .presets=${args.presets ?? typicalPresets}
         ?moving=${args.moving}
+        ?closing=${args.closing}
         ?disabled=${args.disabled}
         @control-action=${(e: CustomEvent) => console.log("control-action", e.detail)}
       ></entity-header>
@@ -73,13 +75,24 @@ export const BetweenPresets: Story = {
   },
 };
 
-export const Moving: Story = {
-  name: "Moving (stop enabled)",
+export const Opening: Story = {
+  name: "Opening (open highlighted)",
   args: {
     name: "Living Room Shutter",
     icon: "mdi:window-shutter",
     currentPosition: 50,
     moving: true,
+  },
+};
+
+export const Closing: Story = {
+  name: "Closing (close highlighted)",
+  args: {
+    name: "Living Room Shutter",
+    icon: "mdi:window-shutter",
+    currentPosition: 50,
+    moving: true,
+    closing: true,
   },
 };
 
