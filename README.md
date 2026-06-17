@@ -72,34 +72,15 @@ Preset icons are displayed as snap points on the slider. If a `label` is defined
 
 ## Development
 
-### Prerequisites
+See [CONTRIBUTING.md](CONTRIBUTING.md) for setup instructions, architecture guidelines, component conventions, and the full UX design reference.
 
-- Node.js (LTS)
-- pnpm
-
-### Setup
+Quick start:
 
 ```bash
-pnpm install
-```
-
-### Commands
-
-```bash
+pnpm install      # Install dependencies
 pnpm dev          # Build with watch mode
-pnpm build        # Production build
-pnpm lint         # Run ESLint
-pnpm lint:fix     # Fix ESLint issues
-pnpm format       # Format code with Prettier
-pnpm format:check # Check formatting
+pnpm storybook    # Component development
 ```
-
-### Testing locally in Home Assistant
-
-1. Run `pnpm build`
-2. Copy `dist/lovelace-shutter-card.js` to your HA `config/www/` directory
-3. Add as a Lovelace resource (see manual installation)
-4. Clear browser cache and reload
 
 ## License
 
