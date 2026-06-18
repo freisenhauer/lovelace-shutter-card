@@ -19,6 +19,7 @@ export class ShutterCardMinimal extends ShutterCardBase {
             ?moving=${this._isMoving}
             ?closing=${this._isClosing}
             @control-action=${this._handleControlAction}
+            @header-click=${this._handleHeaderClick}
           ></entity-header>
         </div>
       </ha-card>

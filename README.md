@@ -68,10 +68,11 @@ presets:
 
 | Option    | Type   | Required | Description                                 |
 |-----------|--------|----------|---------------------------------------------|
-| `entity`  | string | yes      | A `cover` entity ID                         |
-| `name`    | string | no       | Override the entity's display name          |
-| `icon`    | string | no       | Override the entity's icon                  |
-| `presets` | list   | no       | List of position presets                    |
+| `entity`     | string | yes      | A `cover` entity ID                         |
+| `name`       | string | no       | Override the entity's display name          |
+| `icon`       | string | no       | Override the entity's icon                  |
+| `presets`    | list   | no       | List of position presets                    |
+| `tap_action` | object | no       | Action when tapping the header (default: `more-info`) |
 
 ### Preset options
 
@@ -82,6 +83,23 @@ presets:
 | `position` | number | yes      | Target position (0–100)                           |
 
 Preset icons are displayed as snap points on the slider. If a `label` is defined, the preset also appears as a chip button below the slider (full variant only). Open (100%) and Closed (0%) are always present as fixed snap points and don't need to be configured.
+
+### Tap action
+
+Tapping the header area (icon + name) triggers a configurable action. Default is `more-info`.
+
+| Option            | Type   | Description                                          |
+|-------------------|--------|------------------------------------------------------|
+| `action`          | string | `more-info`, `navigate`, `call-service`, `toggle`, `none` |
+| `navigation_path` | string | Path for `navigate` (e.g. `/lovelace/room`)          |
+| `service`         | string | Service for `call-service` (e.g. `cover.open_cover`) |
+| `data`            | object | Additional service data for `call-service`           |
+
+```yaml
+tap_action:
+  action: navigate
+  navigation_path: /lovelace/living-room
+```
 
 ## Development
 

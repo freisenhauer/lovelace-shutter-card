@@ -21,6 +21,7 @@ export class ShutterCardCompactChips extends ShutterCardBase {
             ?moving=${this._isMoving}
             ?closing=${this._isClosing}
             @control-action=${this._handleControlAction}
+            @header-click=${this._handleHeaderClick}
           ></entity-header>
           ${this._presets.length
             ? html`

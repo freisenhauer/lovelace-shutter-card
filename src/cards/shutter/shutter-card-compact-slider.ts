@@ -21,6 +21,7 @@ export class ShutterCardCompactSlider extends ShutterCardBase {
             ?moving=${this._isMoving}
             ?closing=${this._isClosing}
             @control-action=${this._handleControlAction}
+            @header-click=${this._handleHeaderClick}
           ></entity-header>
           <snap-point-slider
             .presets=${this._presets}

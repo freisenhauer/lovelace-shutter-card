@@ -2,7 +2,7 @@ import { LitElement } from "lit";
 import { property, state } from "lit/decorators.js";
 import type { PropertyValues } from "lit";
 import type { HomeAssistant } from "../types/ha.js";
-import type { ShutterCardConfig } from "../types/config.js";
+import type { ActionConfig, ShutterCardConfig } from "../types/config.js";
 import type { SliderPreset } from "../types/preset.js";
 
 export abstract class ShutterCardBase extends LitElement {
@@ -111,6 +111,49 @@ export abstract class ShutterCardBase extends LitElement {
       position,
     });
   };
+
+  protected _handleHeaderClick = (): void => {
+    const action = this._config?.tap_action ?? { action: "more-info" as const };
+    this._executeAction(action);
+  };
+
+  private _executeAction(action: ActionConfig): void {
+    if (!this.hass || !this._config) return;
+    const entityId = this._config.entity;
+
+    switch (action.action) {
+      case "more-info": {
+        const event = new Event("hass-more-info", {
+          bubbles: true,
+          cancelable: false,
+          composed: true,
+        });
+        (event as unknown as { detail: unknown }).detail = { entityId };
+        this.dispatchEvent(event);
+        break;
+      }
+      case "navigate":
+        if (action.navigation_path) {
+          history.pushState(null, "", action.navigation_path);
+          window.dispatchEvent(new CustomEvent("location-changed"));
+        }
+        break;
+      case "call-service": {
+        if (!action.service) return;
+        const [domain, service] = action.service.split(".");
+        this.hass.callService(domain, service, {
+          entity_id: entityId,
+          ...action.data,
+        });
+        break;
+      }
+      case "toggle":
+        this.hass.callService("cover", "toggle", { entity_id: entityId });
+        break;
+      case "none":
+        break;
+    }
+  }
 
   abstract getCardSize(): number;
 

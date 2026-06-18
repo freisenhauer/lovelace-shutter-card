@@ -31,10 +31,16 @@ export class EntityHeader extends LitElement {
     return this.currentPosition > 0;
   }
 
+  private onInfoClick = (): void => {
+    this.dispatchEvent(
+      new CustomEvent("header-click", { bubbles: true, composed: true }),
+    );
+  };
+
   protected render() {
     return html`
       <div class="header">
-        <div class="info">
+        <div class="info" @click=${this.onInfoClick}>
           <div class="icon-circle" ?active=${this.active}>
             <ha-icon .icon=${this.icon}></ha-icon>
           </div>
@@ -78,6 +84,12 @@ export class EntityHeader extends LitElement {
       align-items: center;
       gap: 10px;
       min-width: 0;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .info:active {
+      opacity: 0.7;
     }
 
     .icon-circle {
