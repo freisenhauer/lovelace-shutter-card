@@ -275,23 +275,23 @@ export class SnapPointSlider extends LitElement {
 
     @keyframes shimmer {
       0% {
-        transform: translateX(-100%);
+        transform: translateX(100%);
       }
       100% {
-        transform: translateX(100%);
+        transform: translateX(-100%);
       }
     }
 
     .fill.moving.closing::after {
-      animation-name: shimmer-reverse;
+      animation-name: shimmer-closing;
     }
 
-    @keyframes shimmer-reverse {
+    @keyframes shimmer-closing {
       0% {
-        transform: translateX(100%);
+        transform: translateX(-100%);
       }
       100% {
-        transform: translateX(-100%);
+        transform: translateX(100%);
       }
     }
 
