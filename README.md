@@ -8,6 +8,9 @@ Most shutter cards treat covers as simple open/close devices. European roller sh
 
 This card natively understands that behavior and lets you define **configurable position presets** — specific percentage values that can be targeted directly, making it easy to reach common positions like "closed with slats open" or "half-open" with a single tap.
 
+![Shutter Card in dark mode](images/full-dark.png)
+![Shutter Card in light mode](images/full-light.png)
+
 ## Features
 
 - Native support for European roller shutter behavior (slat positions)
@@ -40,12 +43,37 @@ This card natively understands that behavior and lets you define **configurable 
 
 ## Card Variants
 
-| Type | Description |
-|------|-------------|
-| `custom:fr-shutter-card` | Full — header, snap-point slider, and preset chips |
-| `custom:fr-shutter-card-compact-chips` | Compact — header and preset chips |
-| `custom:fr-shutter-card-compact-slider` | Compact — header and snap-point slider |
-| `custom:fr-shutter-card-minimal` | Minimal — header only |
+### Full (`custom:fr-shutter-card`)
+
+Header, snap-point slider, and preset chips.
+
+| Light | Dark |
+|-------|------|
+| ![Full variant light](images/full-light.png) | ![Full variant dark](images/full-dark.png) |
+
+### Compact — Chips (`custom:fr-shutter-card-compact-chips`)
+
+Header and preset chips, no slider.
+
+| Light | Dark |
+|-------|------|
+| ![Compact chips light](images/compact-chips-light.png) | ![Compact chips dark](images/compact-chips-dark.png) |
+
+### Compact — Slider (`custom:fr-shutter-card-compact-slider`)
+
+Header and snap-point slider, no chips.
+
+| Light | Dark |
+|-------|------|
+| ![Compact slider light](images/compact-slider-light.png) | ![Compact slider dark](images/compact-slider-dark.png) |
+
+### Minimal (`custom:fr-shutter-card-minimal`)
+
+Header only — open/stop/close controls.
+
+| Light | Dark |
+|-------|------|
+| ![Minimal light](images/minimal-light.png) | ![Minimal dark](images/minimal-dark.png) |
 
 ## Configuration
 
