@@ -32,9 +32,7 @@ export class EntityHeader extends LitElement {
   }
 
   private onInfoClick = (): void => {
-    this.dispatchEvent(
-      new CustomEvent("header-click", { bubbles: true, composed: true }),
-    );
+    this.dispatchEvent(new CustomEvent("header-click", { bubbles: true, composed: true }));
   };
 
   protected render() {

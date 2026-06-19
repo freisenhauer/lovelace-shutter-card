@@ -157,6 +157,10 @@ export abstract class ShutterCardBase extends LitElement {
 
   abstract getCardSize(): number;
 
+  static getConfigElement() {
+    return document.createElement("fr-shutter-card-editor");
+  }
+
   static getStubConfig() {
     return { entity: "" };
   }

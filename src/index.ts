@@ -2,6 +2,7 @@ import "./cards/shutter/shutter-card.js";
 import "./cards/shutter/shutter-card-compact-chips.js";
 import "./cards/shutter/shutter-card-compact-slider.js";
 import "./cards/shutter/shutter-card-minimal.js";
+import "./shared/components/editor/shutter-card-editor.js";
 
 declare global {
   interface Window {

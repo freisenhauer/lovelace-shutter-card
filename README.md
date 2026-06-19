@@ -14,6 +14,7 @@ This card natively understands that behavior and lets you define **configurable 
 - Configurable position presets with icons and optional labels
 - Snap-point slider with preset icons as anchor points
 - Control of `cover` entities
+- Visual card editor — configure everything through the UI, no YAML required
 - HACS installation support
 
 ## Installation

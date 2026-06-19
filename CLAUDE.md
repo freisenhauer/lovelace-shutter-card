@@ -14,17 +14,22 @@ Custom Home Assistant Lovelace card for European-style roller shutters. The core
 - **Component development:** Storybook with `@storybook/web-components-vite` for isolated component development
 - **Distribution:** HACS-compatible (see `hacs.json`)
 
-## Intended Directory Structure
+## Directory Structure
 
 ```
 src/
 ├── cards/              # Card variants — each subdirectory is a separate Lovelace card type
-│   └── shutter/        # Main shutter card
+│   └── shutter/        # Main shutter card (4 variants + stories + mock data)
 ├── shared/             # Code shared across card variants
+│   ├── base/           # Abstract base class (ShutterCardBase) with shared logic
+│   ├── components/     # Reusable Lit components
+│   │   ├── editor/     # Visual card editor (ha-form based)
+│   │   ├── header/     # Entity header, state display, control buttons
+│   │   ├── preset-chip/ # Pill button for preset positions
+│   │   └── snap-point-slider/ # Slider with snap points and preset icons
 │   ├── types/          # TypeScript types and interfaces
-│   ├── styles/         # Shared CSS (Lit css tagged templates)
-│   └── utils/          # Utility functions
-└── index.ts            # Entry point — registers all card custom elements
+│   └── styles/         # Shared CSS (Lit css tagged templates)
+└── index.ts            # Entry point — registers all card custom elements + editor
 ```
 
 The `cards/` structure supports offering multiple card variants in the future without restructuring.
@@ -56,7 +61,7 @@ Vite produces `dist/lovelace-shutter-card.js` — a single ES module file that L
 
 - Each card variant lives in its own directory under `src/cards/` and registers its own custom element
 - Shared types, styles, and utilities go in `src/shared/`
-- A visual Lovelace card editor (GUI configuration) is a planned goal for each card variant
+- All card variants share a single visual Lovelace card editor (`fr-shutter-card-editor`) for GUI configuration, registered via `getConfigElement()` in the base class
 - The card should work with any `cover` entity, but the UX is optimized for roller shutters with slat positions
 
 ## Developer Guidelines
@@ -71,6 +76,7 @@ Reusable components live in `src/shared/components/` and include at minimum:
 - **Control buttons** — open/stop/close button group
 - **Snap-point slider** — track, snap dots with icons, thumb, fill bar
 - **Preset chip** — pill button with icon + optional label
+- **Card editor** — visual config editor using `ha-form` for basic fields (entity, name, icon, tap action) and custom UI for presets list
 
 Card variants in `src/cards/` compose these shared components and should contain minimal logic beyond layout and wiring.
 
