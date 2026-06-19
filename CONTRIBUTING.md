@@ -79,6 +79,10 @@ Every shared component and every card variant must have a Storybook story (`*.st
 - **Entity header:** active, inactive, different state texts
 - **Card variants:** open, closed, preset active, moving, various preset configurations
 
+### Screenshots
+
+Screenshots of all card variants (light + dark) live in `images/` and are embedded in `README.md`. When adding a new card variant or making visual changes to existing ones, capture updated screenshots and update the README accordingly.
+
 ## UX Design Reference
 
 ### Design Language
